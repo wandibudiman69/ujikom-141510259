@@ -16,7 +16,7 @@
 			@foreach($lembur as $data)
 			<tr>
 				<td>{{$no++}}</td>
-				<td>{{$data->kategori_lembur->kode_l}}</td>
+				<td>{{$data->kategori->kode_l}}</td>
 				<td>{{$data->pegawai->nip}}</td>
 				<td>{{$data->Jumlah_jam}}</td>
 				<td>

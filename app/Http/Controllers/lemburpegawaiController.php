@@ -44,13 +44,13 @@ class lemburpegawaiController extends Controller
     public function store(Request $request)
     {
         $roles=[
-            'kode_lembur_id'=>'required|unique:lembur_pegawais',
+            'kode_limbur_id'=>'required|unique:lembur_pegawais',
             'pegawai_id'=>'required',
             'Jumlah_jam'=>'required',
         ];
         $sms=[
-            'kode_lembur_id.required'=>'jangan kosong',
-            'kode_lembur_id.unique'=>'jangan sama',
+            'kode_limbur_id.required'=>'jangan kosong',
+            'kode_limbur_id.unique'=>'jangan sama',
             'pegawai_id.required'=>'jangan kosong',
             'Jumlah_jam.required'=>'jangan kosong',
         ];
@@ -72,7 +72,7 @@ class lemburpegawaiController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
+    { 
         //
     }
 
@@ -100,23 +100,23 @@ class lemburpegawaiController extends Controller
     public function update(Request $request, $id)
     {
         $lembur=Lembur_pegawai::where('id',$id)->first();
-        if($lembur['kode_lembur_id'] != Request('kode_lembur_id')){
+        if($lembur['kode_limbur_id'] != Request('kode_limbur_id')){
             $roles=[
-            'kode_lembur_id'=>'required',
+            'kode_limbur_id'=>'required',
             'pegawai_id'=>'required',
             'Jumlah_jam'=>'required',
         ];
         }
         else{
             $roles=[
-            'kode_lembur_id'=>'required|unique:lembur_pegawais',
+            'kode_limbur_id'=>'required|unique:lembur_pegawais',
             'pegawai_id'=>'required',
             'Jumlah_jam'=>'required',
         ];
         }
         $sms=[
-            'kode_lembur_id.required'=>'jangan kosong',
-            'kode_lembur_id.unique'=>'jangan sama',
+            'kode_limbur_id.required'=>'jangan kosong',
+            'kode_limbur_id.unique'=>'jangan sama',
             'pegawai_id.required'=>'jangan kosong',
             'Jumlah_jam.required'=>'jangan kosong',
         ];

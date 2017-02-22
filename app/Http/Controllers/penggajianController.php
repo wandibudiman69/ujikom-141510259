@@ -3,10 +3,14 @@
 namespace App\Http\Controllers;
 
 use Request;
-use Input;
 use Validator;
+use Input;
 use App\Penggajian;
-class penggajianController extends Controller
+use App\Tunjangan_pegawai;
+use App\Pegawai;
+use App\Lembur_pegawai;
+
+class PenggajianController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +20,21 @@ class penggajianController extends Controller
     public function index()
     {
         $penggajian=Penggajian::all();
-        return view('penggajian.index',compact('penggajian'));
+        $pegawai=Pegawai::all();
+        $lemburp=Lembur_pegawai::all();
+        $tunjangan=Tunjangan_pegawai::all();
+        return view('penggajian.index',compact('penggajian','pegawai','lemburp','tunjangan'));
+    }
+
+     public function search(Request $request)
+    {
+        $query = Request::get('q');
+        $pegawai = Pegawai::where('id', 'LIKE', '%' . $query . '%')->paginate(10);
+        $pegawaii = Pegawai::all();
+        $penggajian=Penggajian::all();
+         $lemburp=Lembur_pegawai::all();
+        $tunjangan=Tunjangan_pegawai::all();
+        return view('penggajian.result', compact('penggajian','pegawai','pegawaii','lemburp','tunjangan', 'query'));
     }
 
     /**
@@ -36,35 +54,11 @@ class penggajianController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-        // $this->validate($request,['kode_g' => 'required|unique:golongans,kode_g',
     {
-        //     'nama_g' => 'required','besar_uang' =>'required'
-        //     ]);
-
-        $rules=['tunjangan_pegawai_id' => 'required|unique:penggajians,tunjangan_pegawai_id',
-            'jumlah_jam_lembur' => 'required','jumlah_uang_lembur' =>'required' , 'gaji_pokok' => 'required' , 'tanggal_pengambilan' => 'required' ,'status_pengambilan' => 'required' , 'petugas_penerima' => 'required'];
-        $sms=[
-            'tunjangan_pegawai_id.required' => 'jangan kosong',
-            'tunjangan_pegawai_id.unique' => 'data udah ada',
-            'jumlah_jam_lembur.required' => 'jangan kosong',
-            'jumlah_uang_lembur.required' => 'jangan kosong',
-            'gaji_pokok.required' => 'jangan kosong',
-            'tanggal_pengambilan.required' => 'jangan kosong',
-            'status_pengambilan.required' => 'jangan kosong',
-            'petugas_penerima.required' => 'jangan kosong'
-            ];
-        $validasi = Validator::make(Input::all(),$rules,$sms);
-        if($validasi->fails()){
-            return redirect()->back()
-            ->withErrors($validasi)
-            ->withInput();
-        }
-
         $penggajian=Request::all();
         Penggajian::create($penggajian);
         return redirect('penggajian');
     }
-
     /**
      * Display the specified resource.
      *
@@ -84,8 +78,7 @@ class penggajianController extends Controller
      */
     public function edit($id)
     {
-        $penggajian=Penggajian::find($id);
-        return view ('penggajian.edit',compact('penggajian'));
+        //
     }
 
     /**
@@ -97,28 +90,7 @@ class penggajianController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $rules=['tunjangan_pegawai_id' => 'required|unique:penggajians,tunjangan_pegawai_id',
-            'jumlah_jam_lembur' => 'required','jumlah_uang_lembur' =>'required' , 'gaji_pokok' => 'required' , 'tanggal_pengambilan' => 'required' ,'status_pengambilan' => 'required' , 'petugas_penerima' => 'required'];
-        $sms=[
-            'tunjangan_pegawai_id.required' => 'jangan kosong',
-            'tunjangan_pegawai_id.unique' => 'data udah ada',
-            'jumlah_jam_lembur.required' => 'jangan kosong',
-            'jumlah_uang_lembur.required' => 'jangan kosong',
-            'gaji_pokok.required' => 'jangan kosong',
-            'tanggal_pengambilan.required' => 'jangan kosong',
-            'status_pengambilan.required' => 'jangan kosong',
-            'petugas_penerima.required' => 'jangan kosong'
-            ];
-        $validasi = Validator::make(Input::all(),$rules,$sms);
-        if($validasi->fails()){
-            return redirect()->back()
-            ->withErrors($validasi)
-            ->withInput();
-        }
-
-        $penggajian=Request::all();
-        Penggajian::create($penggajian);
-        return redirect('penggajian');
+        //
     }
 
     /**
@@ -129,7 +101,6 @@ class penggajianController extends Controller
      */
     public function destroy($id)
     {
-        $penggajian=Penggajian::find($id)->delete();
-        return redirect('penggajian');
+        //
     }
 }
