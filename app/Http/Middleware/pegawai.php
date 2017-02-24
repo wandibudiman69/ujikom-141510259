@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Auth;
-class AdminHRDMiddleware
+class pegawai
 {
     /**
      * Handle an incoming request.
@@ -15,7 +15,15 @@ class AdminHRDMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::check() && Auth::user()->type_user == "Admin"||Auth::check() && Auth::user()->type_user == "HRD")
+         if (Auth::check() && Auth::user()->type_user == "Pegawai")
+        { 
+            return $next($request);
+        }
+         else if (Auth::check() && Auth::user()->type_user == "Keuangan")
+        { 
+            return $next($request);
+        }
+        else if (Auth::check() && Auth::user()->type_user == "Admin")
         { 
             return $next($request);
         }

@@ -13,6 +13,11 @@ class jabatanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('admin-hrd');
+    }
+
     public function index()
     {
         $jabatan=Jabatan::all();
