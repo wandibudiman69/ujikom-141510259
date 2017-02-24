@@ -1,6 +1,13 @@
 @extends('layouts.app')
 @section('content')
-<h1>Daftar Golongan</h1>
+<div class="container">
+<div class="row">
+<div class="col-md-12">
+<div class="panel panel-default">
+<div class="panel-heading">
+Daftar Golongan
+</div>
+<div class="panel-body">
 	<table border="1" class="table table-striped table-border table-hover">
 		<thead>
 			<tr>
@@ -32,5 +39,9 @@
 		</tbody>
 	</table>
 	<a  href="{{url('golongan/create')}}" class="btn btn-primary form-control">Tambah</a>
-
+</div>
+</div>
+</div>
+</div>
+</div>
 @endsection

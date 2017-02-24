@@ -24,7 +24,16 @@ Route::resource('/kategori', 'kategoriController');
 Route::resource('/tunjangan', 'tunjanganController');
 Route::resource('/pegawai', 'pegawaiController');
 Route::resource('/lemburp','lemburpegawaiController');
-Route::resource('/tunjanganp','tunjanganController');
-Route::resource('/penggajian','penggajianController');
+Route::resource('/gaji','penggajianController');
+Route::resource('/tunjanganp', 'tunjanganpController');
+Route::get('bulangaji','penggajianController@search');
+Route::group(['middleware' => ['api','cors'],'prefix' => 'api'], function () {
+    Route::post('register', 'APIController@register');
+    Route::post('login', 'APIController@login');
+    Route::group(['middleware' => 'jwt-auth'], function () {
+    	Route::post('get_user_details', 'APIController@get_user_details');
+    });
+});
+
 
 

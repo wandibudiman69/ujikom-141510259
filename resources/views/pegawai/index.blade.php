@@ -2,40 +2,8 @@
 @section('content')
  <div class="container">
             <div class="row">
-             	<div class="col-md-5 col-md-offset-0">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading"><h1><center>Daftar User</center></h1></div>
-                        <div class="panel-body">
-                            <table border="1" class="table table-striped table-border table-hover">
-								<thead>
-									<tr>
-										<th>No</th>
-										<th>Name</th>
-										<th>Email</th>
-										<th>Type User</th>
-									</tr>
-								</thead>
-								@php $no=1; @endphp
-								<tbody>
-									@foreach($pegawai as $data)
-									<tr>
-										<td>{{$no++}}</td>
-										<td>{{$data->user->name}}</td>
-										<td>{{$data->user->email}}</td>
-										<td>{{$data->user->type_user}}</td>
-
-										
-									</tr>
-									@endforeach
-								</tbody>
-							</table>
-							<a  href="{{url('pegawai/create')}}" class="btn btn-primary form-control">Tambah</a>
-
-                        </div>
-                    </div>
-             	</div>
-             	<div class="col-md-7 col-md-offset-0">
-                    <div class="panel panel-primary">
+             	<div class="col-md-12">
+                    <div class="panel panel-default">
                         <div class="panel-heading"><h1><center>Daftar Pegawai</center></h1></div>
                         <div class="panel-body">
                             <table border="1" class="table table-striped table-border table-hover">
@@ -43,6 +11,8 @@
 									<tr>
 										<th>NIP</th>
 										<th>Nama Pegawai</th>
+										<th>Email</th>
+										<th>Permissions</th>
 										<th>Nama Golongan</th>
 										<th>Nama Jabatan</th>
 										<th>Photo</th>
@@ -54,6 +24,8 @@
 									<tr>
 										<td>{{$data->nip}}</td>
 										<td>{{$data->user->name}}</td>
+										<td>{{$data->user->type_user}}</td>
+										<td>{{$data->user->email}}</td>
 										<td>{{$data->golongan->nama_g}}</td>
 										<td>{{$data->jabatan->nama_j}}</td>
 										<td>
@@ -81,7 +53,7 @@
 									@endforeach
 								</tbody>
 							</table>
-							<a  href="{{url('pegawai/create')}}" class="btn btn-primary form-control">Tambah</a>
+							<a  href="{{url('pegawai/create')}}" class="btn btn-block btn-default">Tambah</a>
 
                         </div>
                     </div>

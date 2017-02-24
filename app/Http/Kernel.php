@@ -55,5 +55,6 @@ class Kernel extends HttpKernel
         'admin-hrd' => \App\Http\Middleware\AdminHRDMiddleware::class,
         'keuangan' => \App\Http\Middleware\keuangan::class,
         'pegawai' => \App\Http\Middleware\pegawai::class,
+        'jwt-auth' => \App\Http\Middleware\authJWT::class,
     ];
 }

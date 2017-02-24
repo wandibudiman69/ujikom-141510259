@@ -1,6 +1,13 @@
 @extends('layouts.app')
 @section('content')
+<div class="container">
+<div class="row">
+<div class="col-md-12">
+<div class="panel panel-default">
+<div class="panel-heading">
 <h1>Daftar Jabatan</h1>
+</div>
+<div class="panel-body">
 	<table border="1" class="table table-striped table-border table-hover">
 		<thead>
 			<tr>

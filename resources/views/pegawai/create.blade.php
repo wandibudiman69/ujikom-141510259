@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6">
-            <div class="panel panel-primary">
+            <div class="panel panel-default">
                 <div class="panel-heading">Tambah User</div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/pegawai') }}" enctype='multipart/Form-data'>
@@ -76,7 +76,7 @@
             </div>
         </div>
         <div class="col-md-6">
-            <div class="panel panel-primary">
+            <div class="panel panel-default">
                 <div class="panel-heading">
                     <div class="panel-title">Tambah Pegawai</div>
                 </div>

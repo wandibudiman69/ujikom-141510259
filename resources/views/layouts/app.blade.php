@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
+    <link href="/css/app-child.css" rel="stylesheet">
 
     <!-- Scripts -->
     <script>
@@ -43,7 +44,14 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        &nbsp;
+                        <li><a href="{{ url('/golongan') }}">GOLONGAN</a></li>
+                        <li><a href="{{ url('/jabatan') }}">JABATAN</a></li>
+                        <li><a href="{{ url('/kategori') }}">KATEGORI LEMBUR</a></li>
+                        <li><a href="{{ url('/tunjangan') }}">TUNJANGAN</a></li>
+                        <li><a href="{{ url('/pegawai') }}">PEGAWAI</a></li>
+                        <li><a href="{{ url('/lemburp') }}">LEMBUR PEGAWAI</a></li>
+                        <li><a href="{{ url('/tunjanganp') }}">TUNJANGAN PEGAWAI</a></li>
+                        <li><a href="{{ url('/gaji') }}">PENGGAJIAN</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -53,30 +61,6 @@
                             <li><a href="{{ url('/login') }}">Login</a></li>
                             <li><a href="{{ url('/register') }}">Register</a></li>
                         @else
-                        <a class="navbar-brand btn btn-success" href="{{ url('/golongan') }}">
-                            GOLONGAN
-                        </a>
-                        <a class="navbar-brand btn btn-primary" href="{{ url('/jabatan') }}">
-                            JABATAN
-                        </a>
-                        <a class="navbar-brand btn btn-success" href="{{ url('/kategori') }}">
-                            KATEGORI LEMBUR
-                        </a>
-                        <a class="navbar-brand btn btn-primary" href="{{ url('/tunjangan') }}">
-                            TUNJANGAN
-                        </a>
-                        <a class="navbar-brand btn btn-success" href="{{ url('/pegawai') }}">
-                            PEGAWAI
-                        </a>
-                        <a class="navbar-brand btn btn-primary" href="{{ url('/lemburp') }}">
-                            LEMBUR PEGAWAI
-                        </a>
-                        <a class="navbar-brand btn btn-success" href="{{ url('/tunjanganp') }}">
-                            TUNJANGAN PEGAWAI
-                        </a>
-                        <a class="navbar-brand btn btn-primary" href="{{ url('/penggajian') }}">
-                            PENGGAJIAN
-                        </a>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>
@@ -101,7 +85,7 @@
                 </div>
             </div>
         </nav>
-
+        <br><br><br>
         @yield('content')
     </div>
 
